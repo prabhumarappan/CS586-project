@@ -3,7 +3,7 @@
 ## Subject Area - Dota
 
 ## General Description
-Dota know as Defence of The Ancient is a online multiplayer game. There are two teams of 5 players each, Dire and Radiant. Every player chooses their own hero (who have a combination of skill in agility, strength and intelligence).
+Dota[https://www.dota2.com/home] know as Defence of The Ancient is a online multiplayer game. There are two teams of 5 players each, Dire and Radiant. Every player chooses their own hero (who have a combination of skill in agility, strength and intelligence).
 
 The game can go more comprehensive than what I have decided to implement. The game can have coaches, players can build items, upgrade items, leveling up heros and also can give other players items. But for the purpose of this project, this is just restricted to
 
