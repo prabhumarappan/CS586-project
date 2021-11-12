@@ -42,7 +42,11 @@ The game can go more comprehensive than what I have decided to implement. The ga
 
 ## Data Source
 1. https://www.opendota.com/
-2. https://www.kaggle.com/devinanzelmo/dota-2-matches
+2. https://www.opendota.com/api-keys
+3. https://www.opendota.com/heroes
+4. https://www.opendota.com/teams
+5. https://www.kaggle.com/devinanzelmo/dota-2-matches
 
 ### What is the plan to ingest data into DB?
 I plan to convert the data form different sources into a csv and then plan to load them into the database using the `copy` command.
+The data will be combed from the above opendota API and then aggregated into multiple CSVs.
