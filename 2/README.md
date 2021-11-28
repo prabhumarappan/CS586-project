@@ -116,7 +116,7 @@
 
 SQL Statements
 ==============
-`CREATE TABLE User (
+`CREATE TABLE DUser (
    id int PRIMARY KEY, 
    username varchar(255) UNIQUE,
    email varchar(320) UNIQUE,
@@ -126,12 +126,12 @@ SQL Statements
 `CREATE TABLE Hero (
    id int PRIMARY KEY,
    name varchar(200) NOT NULL,
-   attack_type varchar(6) NOT NULL
-   armor float NOT NULL,
-   complexity int NOT NULL
+   attack_type varchar(6) NOT NULL,
+   armor decimal NOT NULL,
+   complexity int NOT NULL,
    type varchar(12) NOT NULL,
-   hP float NOT NULL,
-   mana float NOT NULL
+   hP decimal NOT NULL,
+   mana decimal NOT NULL
 );`
 
 `CREATE TABLE Skill (
@@ -149,33 +149,31 @@ SQL Statements
 
 `CREATE TABLE Team (
    id int PRIMARY KEY,
-   match_id int NOT NULL,
    date timestamp NOT NULL,
    user_id int NOT NULL,
-   type varchar(7) NOT NULL
+   type varchar(7) NOT NULL,
    score int NULL,
-   CONSTRAINT fk_match FOREIGN KEY (match_id) REFERENCES Match (id),
-   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES User (id)
+   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES DUser (id)
 );`
 
 `CREATE TABLE TeamUser (
    team_id int NOT NULL,
    user_id int NOT NULL,
    CONSTRAINT fk_team FOREIGN KEY (team_id) REFERENCES Team (id),
-   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES User (id)
+   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES DUser (id)
 );`
 
 `CREATE TABLE Match (
    id int PRIMARY KEY,
    start timestamp NOT NULL,
    duration int NOT NULL,
-   winner int NOT NULL,
-   CONSTRAINT fk_winner FOREIGN KEY (winner) REFERENCES Team (id)
+   winner int,
+   CONSTRAINT fk_winner FOREIGN KEY (winner) REFERENCES Team(id)
 );`
 
 `CREATE TABLE MatchTeam (
    match_id int NOT NULL,
-   team_id int NOT_NULL,
+   team_id int NOT NULL,
    CONSTRAINT fk_match FOREIGN KEY (match_id) REFERENCES Match (id),
    CONSTRAINT fk_team FOREIGN KEY (team_id) REFERENCES Team (id)
 );`
@@ -185,7 +183,7 @@ SQL Statements
    hero_id int NOT NULL,
    match_id int NOT NULL,
    result VARCHAR(4) NULL,
-   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES User(id),
+   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES DUser(id),
    CONSTRAINT fk_hero FOREIGN KEY (hero_id) REFERENCES Hero(id),
    CONSTRAINT fk_match FOREIGN KEY (match_id) REFERENCES Match(id)
 );`
