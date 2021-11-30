@@ -80,6 +80,13 @@ CREATE TABLE DUser (
 );
 ```
 
+### Schema
+![Alt text](./images/DUser%20Schema.png?height=500 "Title")
+
+### Sample Data
+
+![Alt text](./images/DUser%20Sample%20Data.png?height=500 "Title")
+
 ## Hero
 
    1. id (PK)
@@ -103,6 +110,10 @@ CREATE TABLE Hero (
    mana decimal NOT NULL
 );
 ```
+
+### Schema
+![Alt text](./images/Hero%20Schema.png?height=500 "Title")
+
 
 ## Skill
 
