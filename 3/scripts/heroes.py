@@ -31,12 +31,15 @@ for hero in resp_data:
     complexity = hero['move_speed']
     hp = hero['base_health']
     mana = hero['base_mana']
+    picks = hero['turbo_picks']
+    wins = hero['turbo_wins']
 
-    hero_data.append([id, name, attack_type, armor, complexity, type, hp, mana])
+    hero_data.append([id, name, attack_type, armor, complexity, type, hp, mana, picks, wins])
 
 import csv
 fout = open('../data/heroes.csv', 'w')
 writer = csv.writer(fout)
+writer.writerow(['id', 'name', 'attack_type', 'armor', 'complexity', 'type', 'hp', 'mana', 'picks', 'wins'])
 for hero in hero_data:
     writer.writerow(hero)
 fout.close()

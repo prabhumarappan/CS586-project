@@ -59,31 +59,6 @@ for user in resp_data:
         teamusers[team_id].append([team_id, id, created_at])
 
 
-
-
-# for teamid in teamusers:
-
-#     team_url = "https://api.opendota.com/api/teams/%s/players" % (teamid)
-#     print(team_url)
-#     teamdata_resp = get(team_url)
-#     teamdata = teamdata_resp.json()
-#     for user in teamdata:
-#         user_id = user['account_id']
-#         username = user['name']
-#         if username and username not in users and user['is_current_team_member']:
-#             user_api_url = "https://api.opendota.com/api/players/" + str(user_id)
-#             user_api_data = get(user_api_url).json()['profile']
-
-#             username = user_api_data['name']
-#             email = user_api_data['steamid'] + "@steam.com"
-#             created_at = user_api_data['last_login'] 
-#             if not created_at:
-#                 created_at = random_time()
-
-#             users[username] = [id, username, email, created_at]
-            
-#             teamusers[teamid].append([teamid, user_id, created_at])
-
 teamuser_f = open('../data/teamuser.csv', 'w')
 teamuser_writer = csv.writer(teamuser_f)
 teamuser_writer.writerow(['team_id', 'user_id', 'date_joined'])
