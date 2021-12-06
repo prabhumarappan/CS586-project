@@ -25,7 +25,7 @@ for hero in resp_data:
         skills.append([id, name, description])
         hero_skills.append([hero_id, id])
 
-skill_f = open('./data/skill.csv', 'w')
+skill_f = open('../data/skill.csv', 'w')
 import csv
 skill_writer = csv.writer(skill_f)
 skill_writer.writerow(['id', 'name', 'description'])
@@ -33,7 +33,7 @@ for skill in skills:
     skill_writer.writerow(skill)
 skill_f.close()
 
-heroskill_f = open('./data/heroskill.csv', 'w')
+heroskill_f = open('../data/heroskill.csv', 'w')
 heroskill_writer = csv.writer(heroskill_f)
 heroskill_writer.writerow(['hero_id', 'skill_id'])
 for heroskill in hero_skills:

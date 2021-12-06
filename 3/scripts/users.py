@@ -84,14 +84,14 @@ for user in resp_data:
             
 #             teamusers[teamid].append([teamid, user_id, created_at])
 
-teamuser_f = open('./data/teamuser.csv', 'w')
+teamuser_f = open('../data/teamuser.csv', 'w')
 teamuser_writer = csv.writer(teamuser_f)
 teamuser_writer.writerow(['team_id', 'user_id', 'date_joined'])
 for team_id in teamusers:
     for team in teamusers[team_id]:
         teamuser_writer.writerow(team)
 
-user_f = open('./data/duser.csv', 'w')
+user_f = open('../data/duser.csv', 'w')
 user_writer = csv.writer(user_f)
 user_writer.writerow(['id', 'username', 'email', 'created_at'])
 for user in users:
@@ -99,7 +99,7 @@ for user in users:
 
 user_f.close()
 
-team_f = open('./data/team.csv', 'w')
+team_f = open('../data/team.csv', 'w')
 team_writer = csv.writer(team_f)
 team_writer.writerow(['id', 'name', 'date'])
 for team_id in teams:

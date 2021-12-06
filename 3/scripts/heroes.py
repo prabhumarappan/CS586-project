@@ -35,7 +35,7 @@ for hero in resp_data:
     hero_data.append([id, name, attack_type, armor, complexity, type, hp, mana])
 
 import csv
-fout = open('./data/heroes.csv', 'w')
+fout = open('../data/heroes.csv', 'w')
 writer = csv.writer(fout)
 for hero in hero_data:
     writer.writerow(hero)
