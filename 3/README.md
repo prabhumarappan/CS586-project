@@ -82,7 +82,6 @@ CREATE TABLE Hero (
 ### Sample Data
 ![Alt text](./images/Hero%20Sample%20Data.png?height=500 "Title")
 
-
 ## Skill
 
    1. id (PK)
@@ -96,6 +95,9 @@ CREATE TABLE Skill (
    description text NOT NULL
 );
 ```
+### Sample Data
+![Alt text](./images/Skill%20Sample%20Data.png?height=500 "Title")
+
 ## HeroSkill
 
    1. hero_id
@@ -109,6 +111,9 @@ CREATE TABLE HeroSkill (
    CONSTRAINT fk_skill FOREIGN KEY (skill_id) REFERENCES Skill (id)
 );
 ```
+### Sample Data
+![Alt text](./images/Hero%20Skill%20Sample%20Data.png?height=500 "Title")
+
 ## Team
 
    1. id (PK)
@@ -122,6 +127,9 @@ CREATE TABLE DTeam (
    date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 ```
+### Sample Data
+![Alt text](./images/Team%20Sample%20Data.png?height=500 "Title")
+
 ## TeamUser
 
    1. team_id (FK)
@@ -137,6 +145,9 @@ CREATE TABLE TeamUser (
    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES DUser (id)
 );
 ```
+### Sample Data
+![Alt text](./images/Team%20User%20Sample%20Data.png?height=500 "Title")
+
 ## Match
 
    1. id (PK)
@@ -158,6 +169,9 @@ CREATE TABLE Match (
    CONSTRAINT fk_direteamid FOREIGN KEY (direTeamId) REFERENCES DTeam(id)
 );
 ```
+### Sample Data
+![Alt text](./images/Match%20Sample%20Data.png?height=500 "Title")
+
 ## UserHero
 
    1. user_id (FK)
@@ -183,6 +197,8 @@ CREATE TABLE UserHero(
 );
 ```
 
+### Sample Data
+![Alt text](./images/User%20Hero%20Sample%20Data.png?height=500 "Title")
 
 ## How we populated the database?
 We first downloaded and created data from multiple APIs. And then loaded the data into db using `/copy` command.
