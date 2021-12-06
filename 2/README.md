@@ -71,7 +71,7 @@ Schema and SQL Statements
    
 ```SQL
 CREATE TABLE DUser (
-   id SERIAL PRIMARY KEY, 
+   id BIGINT PRIMARY KEY, 
    username varchar(255) UNIQUE,
    wins int DEFAULT 0,
    losses int DEFAULT 0,
@@ -153,7 +153,7 @@ CREATE TABLE HeroSkill (
    3. name
    
 ```SQL
-CREATE TABLE Team (
+CREATE TABLE DTeam (
    id int PRIMARY KEY,
    name varchar(200) NOT NULL,
    date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -168,9 +168,9 @@ CREATE TABLE Team (
 ```SQL
 CREATE TABLE TeamUser (
    team_id int NOT NULL,
-   user_id int NOT NULL,
+   user_id BIGINT NOT NULL,
    date_joined timestamp DEFAULT CURRENT_TIMESTAMP,
-   CONSTRAINT fk_team FOREIGN KEY (team_id) REFERENCES Team (id),
+   CONSTRAINT fk_team FOREIGN KEY (team_id) REFERENCES DTeam (id),
    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES DUser (id)
 );
 ```
@@ -185,14 +185,14 @@ CREATE TABLE TeamUser (
 
 ```SQL
 CREATE TABLE Match (
-   id int PRIMARY KEY,
+   id BIGINT PRIMARY KEY,
    start timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
    duration int NOT NULL,
    radTeamId int,
    direTeamId int,
    radVictory boolean,
-   CONSTRAINT fk_radteamid FOREIGN KEY (radTeamId) REFERENCES Team(id),
-   CONSTRAINT fk_direteamid FOREIGN KEY (direTeamId) REFERENCES Team(id)
+   CONSTRAINT fk_radteamid FOREIGN KEY (radTeamId) REFERENCES DTeam(id),
+   CONSTRAINT fk_direteamid FOREIGN KEY (direTeamId) REFERENCES DTeam(id)
 );
 ```
 ## UserHero
@@ -207,9 +207,9 @@ CREATE TABLE Match (
 
 ```SQL
 CREATE TABLE UserHero(
-   user_id int NOT NULL,
+   user_id BIGINT NOT NULL,
    hero_id int NOT NULL,
-   match_id int NOT NULL,
+   match_id BIGINT NOT NULL,
    victory boolean DEFAULT FALSE,
    kills int DEFAULT 0,
    deaths int DEFAULT 0,
