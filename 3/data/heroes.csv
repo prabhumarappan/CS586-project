@@ -1,0 +1,123 @@
+id, name, attack_type, armor, complexity, type, hp, mana
+1,Anti-Mage,Melee,0,310,Agility,200,75
+2,Axe,Melee,-1,310,Strength,200,75
+3,Bane,Ranged,1,305,Intelligence,200,75
+4,Bloodseeker,Melee,2,300,Agility,200,75
+5,Crystal Maiden,Ranged,-1,280,Intelligence,200,75
+6,Drow Ranger,Ranged,0,295,Agility,200,75
+7,Earthshaker,Melee,2,315,Strength,200,75
+8,Juggernaut,Melee,0,305,Agility,200,75
+9,Mirana,Ranged,-1,290,Agility,200,75
+10,Morphling,Ranged,-2,280,Agility,200,75
+11,Shadow Fiend,Ranged,1,305,Agility,200,75
+12,Phantom Lancer,Melee,-1,290,Agility,200,75
+13,Puck,Ranged,-3,290,Intelligence,200,75
+14,Pudge,Melee,0,280,Strength,200,75
+15,Razor,Ranged,-1,290,Agility,200,75
+16,Sand King,Melee,-1,290,Strength,200,75
+17,Storm Spirit,Ranged,2,285,Intelligence,200,75
+18,Sven,Melee,0,325,Strength,200,75
+19,Tiny,Melee,0,295,Strength,200,75
+20,Vengeful Spirit,Ranged,0,295,Agility,200,75
+21,Windranger,Ranged,-1,290,Intelligence,200,75
+22,Zeus,Ranged,2,315,Intelligence,200,75
+23,Kunkka,Melee,2,315,Strength,200,75
+25,Lina,Ranged,0,290,Intelligence,200,75
+26,Lion,Ranged,-1,290,Intelligence,200,75
+27,Shadow Shaman,Ranged,2,285,Intelligence,200,75
+28,Slardar,Melee,3,300,Strength,200,75
+29,Tidehunter,Melee,0,300,Strength,200,75
+30,Witch Doctor,Ranged,0,300,Intelligence,200,75
+31,Lich,Ranged,-1,295,Intelligence,200,75
+32,Riki,Melee,3,320,Agility,200,75
+33,Enigma,Ranged,2,290,Intelligence,200,75
+34,Tinker,Ranged,2,290,Intelligence,200,75
+35,Sniper,Ranged,-1,285,Agility,200,75
+36,Necrophos,Ranged,1,280,Intelligence,200,75
+37,Warlock,Ranged,1,290,Intelligence,200,75
+38,Beastmaster,Melee,0,305,Strength,200,75
+39,Queen of Pain,Ranged,0,290,Intelligence,200,75
+40,Venomancer,Ranged,0,280,Agility,200,75
+41,Faceless Void,Melee,1,300,Agility,200,75
+42,Wraith King,Melee,-1,315,Strength,200,75
+43,Death Prophet,Ranged,1,325,Intelligence,200,75
+44,Phantom Assassin,Melee,1,305,Agility,200,75
+45,Pugna,Ranged,0,330,Intelligence,200,75
+46,Templar Assassin,Ranged,0,305,Agility,200,75
+47,Viper,Ranged,-2,275,Agility,200,75
+48,Luna,Ranged,2,325,Agility,200,75
+49,Dragon Knight,Melee,0,310,Strength,200,75
+50,Dazzle,Ranged,0,305,Intelligence,200,75
+51,Clockwerk,Melee,1,310,Strength,200,75
+52,Leshrac,Ranged,0,325,Intelligence,200,75
+53,Nature's Prophet,Ranged,0,295,Intelligence,200,75
+54,Lifestealer,Melee,1,320,Strength,200,75
+55,Dark Seer,Melee,2,295,Intelligence,200,75
+56,Clinkz,Ranged,0,290,Agility,200,75
+57,Omniknight,Melee,2,315,Strength,200,75
+58,Enchantress,Ranged,1,320,Intelligence,200,75
+59,Huskar,Ranged,-1,295,Strength,200,75
+60,Night Stalker,Melee,2,295,Strength,200,75
+61,Broodmother,Melee,0,280,Agility,200,75
+62,Bounty Hunter,Melee,4,320,Agility,200,75
+63,Weaver,Ranged,0,275,Agility,200,75
+64,Jakiro,Ranged,1,290,Intelligence,200,75
+65,Batrider,Ranged,1,300,Intelligence,200,75
+66,Chen,Ranged,-1,300,Intelligence,200,75
+67,Spectre,Melee,1,290,Agility,200,75
+68,Ancient Apparition,Ranged,-1,285,Intelligence,200,75
+69,Doom,Melee,3,285,Strength,200,75
+70,Ursa,Melee,1,310,Agility,200,75
+71,Spirit Breaker,Melee,2,295,Strength,200,75
+72,Gyrocopter,Ranged,2,315,Agility,200,75
+73,Alchemist,Melee,-1,305,Strength,200,75
+74,Invoker,Ranged,0,275,Intelligence,200,75
+75,Silencer,Ranged,-1,290,Intelligence,200,75
+76,Outworld Devourer,Ranged,2.5,320,Intelligence,200,75
+77,Lycan,Melee,0,315,Strength,200,75
+78,Brewmaster,Melee,-1,310,Strength,200,75
+79,Shadow Demon,Ranged,0,290,Intelligence,200,75
+80,Lone Druid,Ranged,-2,325,Agility,200,75
+81,Chaos Knight,Melee,2,325,Strength,200,75
+82,Meepo,Melee,4,330,Agility,200,75
+83,Treant Protector,Melee,-1,285,Strength,200,75
+84,Ogre Magi,Melee,5,290,Intelligence,200,75
+85,Undying,Melee,1,300,Strength,200,75
+86,Rubick,Ranged,0,290,Intelligence,200,75
+87,Disruptor,Ranged,0,295,Intelligence,200,75
+88,Nyx Assassin,Melee,1,310,Agility,200,75
+89,Naga Siren,Melee,3,330,Agility,200,75
+90,Keeper of the Light,Ranged,0,330,Intelligence,200,75
+91,Io,Ranged,1,320,Strength,200,75
+92,Visage,Ranged,-1,285,Intelligence,200,75
+93,Slark,Melee,0,300,Agility,200,75
+94,Medusa,Ranged,-1,275,Agility,200,75
+95,Troll Warlord,Ranged,-1,290,Agility,200,75
+96,Centaur Warrunner,Melee,0,300,Strength,200,75
+97,Magnus,Melee,1,305,Strength,200,75
+98,Timbersaw,Melee,0,290,Strength,200,75
+99,Bristleback,Melee,1,290,Strength,200,75
+100,Tusk,Melee,1,315,Strength,200,75
+101,Skywrath Mage,Ranged,-2,325,Intelligence,200,75
+102,Abaddon,Melee,-1,325,Strength,200,75
+103,Elder Titan,Melee,0,310,Strength,200,75
+104,Legion Commander,Melee,0,330,Strength,200,75
+105,Techies,Ranged,5,320,Intelligence,200,75
+106,Ember Spirit,Melee,-1,305,Agility,200,75
+107,Earth Spirit,Melee,0,290,Strength,200,75
+108,Underlord,Melee,3,290,Strength,200,75
+109,Terrorblade,Melee,5,315,Agility,200,75
+110,Phoenix,Ranged,-1,280,Strength,200,75
+111,Oracle,Ranged,1,295,Intelligence,200,75
+112,Winter Wyvern,Ranged,0,285,Intelligence,200,75
+113,Arc Warden,Ranged,-1,285,Agility,200,75
+114,Monkey King,Melee,2,300,Agility,200,75
+119,Dark Willow,Ranged,-1,290,Intelligence,200,75
+120,Pangolier,Melee,1,300,Agility,200,75
+121,Grimstroke,Ranged,0,290,Intelligence,200,75
+123,Hoodwink,Ranged,0,310,Agility,200,75
+126,Void Spirit,Melee,-1,295,Intelligence,200,75
+128,Snapfire,Ranged,1,300,Strength,200,75
+129,Mars,Melee,-1,310,Strength,200,75
+135,Dawnbreaker,Melee,2,310,Strength,200,75
+136,Marci,Melee,0,310,Strength,200,75
