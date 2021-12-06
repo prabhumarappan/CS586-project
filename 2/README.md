@@ -8,19 +8,24 @@
 
 ## Main Entities
 1. User
-   1. Id
-   2. Username
-   3. Email
-   4. Created At
+   1. id (PK)
+   2. username
+   3. email
+   4. created_at
+   5. wins 
+   6. losses 
+   7. total
 2. Hero
-   1. Id
-   2. Name
-   3. AttackType -> Melee/Ranged
-   4. Armor
-   5. Complexity
-   6. Type -> Strength/Intelligence/Agility (enum)
-   7. HP
-   8. Mana
+   1. id (PK)
+   2. name
+   3. attack_type -> Melee/Ranged
+   4. armor
+   5. complexity
+   6. type -> Strength/Intelligence/Agility (enum)
+   7. hp
+   8. mana
+   9. picks
+   10. wins
 3. Skill
    1. Id
    2. Name -> Mana Break/Blink/Counter Spell etc
@@ -30,21 +35,12 @@
    2. name
    3. date
 5. Match
-   1. Id
-   2. Start
-   3. End
-   4. Winner
-   5. Score
-6. Event
-   1. Id
-   2. Type -> Kill/BuyBack/Roshan (enum)
-   3. Description
-7. Tournament
-   1. Id
-   2. Name
-   3. Winner
-   4. Start Date
-   5. Prize Pool
+   1. id (PK)
+   2. start
+   3. duration
+   4. radTeamId (FK)
+   5. direTeamId (FK)
+   6. radVictory
 
 ## Tables
 
@@ -118,6 +114,9 @@ CREATE TABLE Hero (
 
 ### Schema
 ![Alt text](./images/Hero%20Schema.png?height=500 "Title")
+
+### Sample Data
+![Alt text](./images/Hero%20Sample%20Data.png?height=500 "Title")
 
 
 ## Skill
