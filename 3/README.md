@@ -1,10 +1,44 @@
 # Submission 3
 
-## Subject Area - Dota
+# Subject Area - Dota
 
-## ER Diagram
+# Table of Contents
+- [Submission 3](#submission-3)
+- [Subject Area - Dota](#subject-area---dota)
+- [Table of Contents](#table-of-contents)
+- [ER Diagram](#er-diagram)
+- [Changes in Implementation Phase](#changes-in-implementation-phase)
+    - [Changes in ER during Implementation Phase:](#changes-in-er-during-implementation-phase)
+    - [Reason for the above ER changes:](#reason-for-the-above-er-changes)
+    - [Changes in Question during Implemenation Phase:](#changes-in-question-during-implemenation-phase)
+    - [Reason for the above Question changes:](#reason-for-the-above-question-changes)
+- [Schema and SQL Statements](#schema-and-sql-statements)
+  - [DUser](#duser)
+    - [Schema](#schema)
+    - [Sample Data](#sample-data)
+  - [Hero](#hero)
+    - [Schema](#schema-1)
+    - [Sample Data](#sample-data-1)
+  - [Skill](#skill)
+    - [Sample Data](#sample-data-2)
+  - [HeroSkill](#heroskill)
+    - [Sample Data](#sample-data-3)
+  - [Team](#team)
+    - [Sample Data](#sample-data-4)
+  - [TeamUser](#teamuser)
+    - [Sample Data](#sample-data-5)
+  - [Match](#match)
+    - [Sample Data](#sample-data-6)
+  - [UserHero](#userhero)
+    - [Sample Data](#sample-data-7)
+- [How we populated the database?](#how-we-populated-the-database)
+- [Questions - and their respective queries](#questions---and-their-respective-queries)
+
+# ER Diagram
 
 ![Alt text](./images/Dota%20ER%20Diagram.png?height=800 "Title")
+
+# Changes in Implementation Phase
 
 ### Changes in ER during Implementation Phase:
 1. For the DUser table, changed the type of id from INT to BIGINT
@@ -16,7 +50,7 @@
 7. For the UserHero table, changed the type of id from INT to BIGINT
 8. For the UserHero table, modified the columns to be victory, kills, deaths, assists
 
-### Reason for the above changes:
+### Reason for the above ER changes:
 1. Majorly because the data for events and tournaments were not readily available. Had to move them out of the schema. This lead to removing few of the tables. 
 2. Apart from that, to complete the queries I seemed to miss a few columns, so for those I have added extra rows to the existing tables.
 
@@ -27,15 +61,15 @@
 4. Maximum number of buybacks
 5. Removed the query to fetch each players top heor by win rate
 
-### Reason for the above changes:
+### Reason for the above Question changes:
 1. Tournmanets was removed from ER diagram, so no relation to query
 2. Events were removed, so no relation to query
 3. Same as 2
 4. Same as 2
 5. The query for this was becoming way too complicated to run
 
-Schema and SQL Statements
-==============
+# Schema and SQL Statements
+
 ## DUser
 
    1. id (PK)
@@ -217,11 +251,11 @@ CREATE TABLE UserHero(
 ### Sample Data
 ![Alt text](./images/User%20Hero%20Sample%20Data.png?height=500 "Title")
 
-## How we populated the database?
+# How we populated the database?
 We first downloaded and created data from multiple APIs. And then loaded the data into db using `/copy` command.
 I have also included all the scripts in the `scripts` folder which was used to get the data.
 
-## Questions - and their respective queries
+# Questions - and their respective queries
 1. Name the player with maximum number of matches?
    ```SQL
    SELECT username,
