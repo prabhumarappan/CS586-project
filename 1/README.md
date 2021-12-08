@@ -20,24 +20,24 @@ The game can go more comprehensive than what I have decided to implement. The ga
 ## Questions
 1. Name the player with maximum number of matches?
 2. Name the player who has played highest number of hours in game?
-3. Name the player with maximum number of kills in a match?
-4. List the 5 heroes which are picked the most. Order them by their picking rate.
-5. List the last 5 picked heroes. Order them by their picking rate.
-6. List the hero with the highest 
-7. For every player, list down their top hero by their winning percentage
-8. For every player, list down their top picked heroes
-9. List the longest running match
-10. For each player, list one player they have played the most with
-11. List all the tournaments happening now
-12. List top 5 hero skills that are picked
-13. Which player got killed in a match the most?
-14. Find the match with the maximum number of roshan kills
-15. Find the match with the maximum number of buybacks
-16. For player Ana (or any other player) list down their top 5 successful matches and their KD rate(won game and highest KDA)
-17. For player Notail (or any other player) list down their top 5 unsuccessful matches and their KD rate
-18. List down all the players and the number of times they have played the hero "Anti Mage"
-19. List down all the players and the number of times they have played the heros "Troll Warlord" and "Bristeback"
-20. For each hero, list down their characteristics (agility, strength and intelligence) in one row.
+3. Name the player with maximum number of kills in total
+4. Name the player with maximum number of deaths in total
+5. Name the player with the lowest number of assists in total
+6. List the 5 heroes which are picked the most. Order them by their picking rate.
+7. List the last 5 picked heroes. Order them by their picking rate.
+8. List the hero who is picked the most?
+9.  For every player, list down their top picked heroes
+10. List the longest running match
+11. For each player, list their longest running match
+12. For each player, list one player they have played the most with
+13. For player Ana (or any other player) list down their top 5 successful matches and their KD rate(won game and highest KD)
+14. For player Ana (or any other player) list down their top 5 unsuccessful matches and their KD rate
+15. List down all the players and the number of times they have played the hero "Anti Mage"
+16. List down all the players and the number of times they have played the heros "Troll Warlord" and "Bristeback"
+17. For each hero, list down their main type (agility, strength and intelligence)
+18. Name the user with the highest number of victories
+19. Name the user with the highest win rate
+20. Name the user with the lowest number of victories
 
 
 ## Data Source
