@@ -224,140 +224,412 @@ I have also included all the scripts in the `scripts` folder which was used to g
 ## Questions - and their respective queries
 1. Name the player with maximum number of matches?
    ```SQL
-   select username, email from duser where id in (select user_id from userhero group by user_id having count(*) = (select count(*) from userhero group by user_id order by count(*) desc limit 1));
+   SELECT username,
+       email
+   FROM duser
+   WHERE id in
+      (SELECT user_id
+      FROM userhero
+      GROUP BY user_id
+      HAVING count(*) =
+         (SELECT count(*)
+         FROM userhero
+         GROUP BY user_id
+         ORDER BY count(*) DESC
+         LIMIT 1));
    ```
 
    ![Alt text](./images/Query1.png?height=500 "Query")
 
 2. Name the player who has played highest number of hours in game?
    ```SQL
-   select user_id, duser.username, total_duration from (select u.user_id, sum(m.duration) as total_duration from userhero u, match m where u.match_id = m.id group by user_id order by total_duration desc limit 1) as f, duser where f.user_id = duser.id;
+   SELECT user_id, 
+       duser.username, 
+       total_duration 
+   FROM   (SELECT u.user_id, 
+                  Sum(m.duration) AS total_duration 
+         FROM   userhero u, 
+                  MATCH m 
+         WHERE  u.match_id = m.id 
+         GROUP  BY user_id 
+         ORDER  BY total_duration DESC 
+         LIMIT  1) AS f, 
+         duser 
+   WHERE  f.user_id = duser.id; 
    ```
 
    ![Alt text](./images/Query2.png?height=500 "Query")
 
 3. Name the player with maximum number of kills in total
    ```SQL
-   select username, email from duser where id in (select user_id from userhero group by user_id having sum(kills)=(select sum(kills) total_kills from userhero group by user_id order by total_kills desc limit 1)); 
+   SELECT username, 
+       email 
+   FROM   duser 
+   WHERE  id IN (SELECT user_id 
+               FROM   userhero 
+               GROUP  BY user_id 
+               HAVING Sum(kills) = (SELECT Sum(kills) total_kills 
+                                    FROM   userhero 
+                                    GROUP  BY user_id 
+                                    ORDER  BY total_kills DESC 
+                                    LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query3.png?height=500 "Query")
 
 4. Name the player with maximum number of deaths in total
    ```SQL
-   select username, email from duser where id in (select user_id from userhero group by user_id having sum(deaths)=(select sum(deaths) total_deaths from userhero group by user_id order by total_deaths desc limit 1));
+   SELECT username, 
+         email 
+   FROM   duser 
+   WHERE  id IN (SELECT user_id 
+               FROM   userhero 
+               GROUP  BY user_id 
+               HAVING Sum(deaths) = (SELECT Sum(deaths) total_deaths 
+                                       FROM   userhero 
+                                       GROUP  BY user_id 
+                                       ORDER  BY total_deaths DESC 
+                                       LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query4.png?height=500 "Query")
 
 5. Name the player with the lowest number of assists in total
    ```SQL
-   select username, email from duser where id in (select user_id from userhero group by user_id having sum(assists)=(select sum(assists) total_assists from userhero group by user_id order by total_assists asc limit 1));  
+   SELECT username, 
+       email 
+   FROM   duser 
+   WHERE  id IN (SELECT user_id 
+               FROM   userhero 
+               GROUP  BY user_id 
+               HAVING Sum(assists) = (SELECT Sum(assists) total_assists 
+                                       FROM   userhero 
+                                       GROUP  BY user_id 
+                                       ORDER  BY total_assists ASC 
+                                       LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query5.png?height=500 "Query")
 
 6. List the 5 heroes which are picked the most. Order them by their picking rate.
    ```SQL
-   select f.hero_id, hero.name, f.total_picks from hero, (select hero_id, count(*) total_picks from userhero group by hero_id order by total_picks desc limit 5) as f where hero.id = f.hero_id order by f.total_picks desc;
+   SELECT f.hero_id, 
+       hero.name, 
+       f.total_picks 
+   FROM   hero, 
+         (SELECT hero_id, 
+                  Count(*) total_picks 
+         FROM   userhero 
+         GROUP  BY hero_id 
+         ORDER  BY total_picks DESC 
+         LIMIT  5) AS f 
+   WHERE  hero.id = f.hero_id 
+   ORDER  BY f.total_picks DESC; 
    ```
 
    ![Alt text](./images/Query6.png?height=500 "Query")
 
 7. List the last 5 picked heroes. Order them by their picking rate.
    ```SQL
-   select f.hero_id, hero.name, f.total_picks from hero, (select hero_id, count(*) total_picks from userhero group by hero_id order by total_picks asc limit 5) as f where hero.id = f.hero_id order by f.total_picks asc;
+   SELECT f.hero_id, 
+       hero.name, 
+       f.total_picks 
+   FROM   hero, 
+         (SELECT hero_id, 
+                  Count(*) total_picks 
+         FROM   userhero 
+         GROUP  BY hero_id 
+         ORDER  BY total_picks ASC 
+         LIMIT  5) AS f 
+   WHERE  hero.id = f.hero_id 
+   ORDER  BY f.total_picks ASC; 
    ```
 
    ![Alt text](./images/Query7.png?height=500 "Query")
 
 8. List the hero who is picked the most?
    ```SQL
-   select id, name from hero where id = (select hero_id from userhero group by hero_id having count(*) = (select count(*) total_picks from userhero group by hero_id order by total_picks desc limit 1));
+   SELECT id, 
+         name 
+   FROM   hero 
+   WHERE  id = (SELECT hero_id 
+               FROM   userhero 
+               GROUP  BY hero_id 
+               HAVING Count(*) = (SELECT Count(*) total_picks 
+                                 FROM   userhero 
+                                 GROUP  BY hero_id 
+                                 ORDER  BY total_picks DESC 
+                                 LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query8.png?height=500 "Query")
 
 9.  For every player, list down their top picked heroes 
    ```SQL
-   select b.user_id, duser.username, c.hero_id, hero.name, b.games from (select f.user_id, max(hero_count) as games from (select user_id, hero_id, count(*) as hero_count from userhero group by user_id, hero_id order by hero_count desc) as f group by f.user_id) as b, (select user_id, hero_id, games from (select f.user_id, f.hero_id, max(hero_count) as games from (select user_id, hero_id, count(*) as hero_count from userhero group by user_id, hero_id order by hero_count desc) as f group by f.user_id, hero_id) as f) as c, duser, hero where duser.id =b.user_id and c.hero_id = hero.id and b.user_id = c.user_id and b.games = c.games order by b.games desc;
+   SELECT b.user_id, 
+       duser.username, 
+       c.hero_id, 
+       hero.name, 
+       b.games 
+   FROM   (SELECT f.user_id, 
+                  Max(hero_count) AS games 
+         FROM   (SELECT user_id, 
+                        hero_id, 
+                        Count(*) AS hero_count 
+                  FROM   userhero 
+                  GROUP  BY user_id, 
+                           hero_id 
+                  ORDER  BY hero_count DESC) AS f 
+         GROUP  BY f.user_id) AS b, 
+         (SELECT user_id, 
+                  hero_id, 
+                  games 
+         FROM   (SELECT f.user_id, 
+                        f.hero_id, 
+                        Max(hero_count) AS games 
+                  FROM   (SELECT user_id, 
+                                 hero_id, 
+                                 Count(*) AS hero_count 
+                           FROM   userhero 
+                           GROUP  BY user_id, 
+                                    hero_id 
+                           ORDER  BY hero_count DESC) AS f 
+                  GROUP  BY f.user_id, 
+                           hero_id) AS f) AS c, 
+         duser, 
+         hero 
+   WHERE  duser.id = b.user_id 
+         AND c.hero_id = hero.id 
+         AND b.user_id = c.user_id 
+         AND b.games = c.games 
+   ORDER  BY b.games DESC; 
    ```
 
    ![Alt text](./images/Query9.png?height=500 "Query")
    
 10. List the longest running match
    ```SQL
-   select * from match where duration = ( select duration from match order by duration desc limit 1);
+   SELECT * 
+   FROM   MATCH 
+   WHERE  duration = (SELECT duration 
+                     FROM   MATCH 
+                     ORDER  BY duration DESC 
+                     LIMIT  1); 
    ```
 
    ![Alt text](./images/Query10.png?height=500 "Query")
 
 11. For each player, list their longest running match
    ```SQL
-   select a.user_id, duser.username, a.longest_match from (select user_id, max(m.duration) longest_match from userhero, match m, duser  where m.id = match_id group by user_id) as a, duser where a.user_id = duser.id order by a.longest_match desc;
+   SELECT a.user_id, 
+       duser.username, 
+       a.longest_match 
+   FROM   (SELECT user_id, 
+                  Max(m.duration) longest_match 
+         FROM   userhero, 
+                  MATCH m, 
+                  duser 
+         WHERE  m.id = match_id 
+         GROUP  BY user_id) AS a, 
+         duser 
+   WHERE  a.user_id = duser.id 
+   ORDER  BY a.longest_match DESC; 
    ```
 
    ![Alt text](./images/Query11.png?height=500 "Query")
 
 12. For each player, list one player they have played the most with
    ```SQL
-   select a.first_user, duser.username, b.second_user, a.total_played from (select f.first_user, max(played_count) as total_played from (select u1.user_id first_user, u2.user_id second_user, count(*) as played_count from userhero u1, userhero u2 where u1.match_id = u2.match_id and u1.user_id != u2.user_id group by u1.user_id, u2.user_id) as f group by f.first_user) as a, (select f.first_user, f.second_user, max(played_count) as total_played from (select u1.user_id first_user, u2.user_id second_user, count(*) as played_count from userhero u1, userhero u2 where u1.match_id = u2.match_id and u1.user_id != u2.user_id group by u1.user_id, u2.user_id) as f group by f.first_user, second_user) as b, duser where duser.id = a.first_user and a.first_user = b.first_user and a.total_played = b.total_played order by a.total_played desc;
+   SELECT a.first_user, 
+       duser.username, 
+       b.second_user, 
+       a.total_played 
+   FROM   (SELECT f.first_user, 
+                  Max(played_count) AS total_played 
+         FROM   (SELECT u1.user_id first_user, 
+                        u2.user_id second_user, 
+                        Count(*)   AS played_count 
+                  FROM   userhero u1, 
+                        userhero u2 
+                  WHERE  u1.match_id = u2.match_id 
+                        AND u1.user_id != u2.user_id 
+                  GROUP  BY u1.user_id, 
+                           u2.user_id) AS f 
+         GROUP  BY f.first_user) AS a, 
+         (SELECT f.first_user, 
+                  f.second_user, 
+                  Max(played_count) AS total_played 
+         FROM   (SELECT u1.user_id first_user, 
+                        u2.user_id second_user, 
+                        Count(*)   AS played_count 
+                  FROM   userhero u1, 
+                        userhero u2 
+                  WHERE  u1.match_id = u2.match_id 
+                        AND u1.user_id != u2.user_id 
+                  GROUP  BY u1.user_id, 
+                           u2.user_id) AS f 
+         GROUP  BY f.first_user, 
+                     second_user) AS b, 
+         duser 
+   WHERE  duser.id = a.first_user 
+         AND a.first_user = b.first_user 
+         AND a.total_played = b.total_played 
+   ORDER  BY a.total_played DESC; 
    ```
 
    ![Alt text](./images/Query12.png?height=500 "Query")
 
 13. For player Ana (or any other player) list down their top 5 successful matches and their KD rate(won game and highest KD)
    ```SQL
-   select a.user_id, duser.username, a.match_id, b.kills, b.deaths, COALESCE(b.kills / NULLIF(b.deaths,0), b.kills) kd_rate  from (select user_id, match_id from userhero where victory=True group by user_id, match_id) a, userhero b, duser where duser.id = a.user_id and duser.username='Ana' and a.user_id = b.user_id and a.match_id=b.match_id order by kd_rate desc limit 5;
+   SELECT a.user_id, 
+       duser.username, 
+       a.match_id, 
+       b.kills, 
+       b.deaths, 
+       Coalesce(b.kills / Nullif(b.deaths, 0), b.kills) kd_rate 
+   FROM   (SELECT user_id, 
+                  match_id 
+         FROM   userhero 
+         WHERE  victory = true 
+         GROUP  BY user_id, 
+                     match_id) a, 
+         userhero b, 
+         duser 
+   WHERE  duser.id = a.user_id 
+         AND duser.username = 'Ana' 
+         AND a.user_id = b.user_id 
+         AND a.match_id = b.match_id 
+   ORDER  BY kd_rate DESC 
+   LIMIT  5; 
    ```
 
    ![Alt text](./images/Query13.png?height=500 "Query")
 
 14. For player Ana (or any other player) list down their top 5 unsuccessful matches and their KD rate
    ```SQL
-   select a.user_id, duser.username, a.match_id, b.kills, b.deaths, COALESCE(b.kills / NULLIF(b.deaths,0), b.kills) kd_rate  from (select user_id, match_id from userhero where victory=False group by user_id, match_id) a, userhero b, duser where duser.id = a.user_id and duser.username='Ana' and a.user_id = b.user_id and a.match_id=b.match_id order by kd_rate asc limit 5;
+   SELECT a.user_id, 
+       duser.username, 
+       a.match_id, 
+       b.kills, 
+       b.deaths, 
+       Coalesce(b.kills / Nullif(b.deaths, 0), b.kills) kd_rate 
+   FROM   (SELECT user_id, 
+                  match_id 
+         FROM   userhero 
+         WHERE  victory = false 
+         GROUP  BY user_id, 
+                     match_id) a, 
+         userhero b, 
+         duser 
+   WHERE  duser.id = a.user_id 
+         AND duser.username = 'Ana' 
+         AND a.user_id = b.user_id 
+         AND a.match_id = b.match_id 
+   ORDER  BY kd_rate ASC 
+   LIMIT  5; 
    ```
 
    ![Alt text](./images/Query14.png?height=500 "Query")
 
 15. List down all the players and the number of times they have played the hero "Anti Mage"
    ```SQL
-   select d.username, count(*) from userhero u,hero h, duser d where u.hero_id = h.id and h.name= 'Anti-Mage' and d.id = u.user_id group by d.username;
+   SELECT d.username, 
+       Count(*) 
+   FROM   userhero u, 
+         hero h, 
+         duser d 
+   WHERE  u.hero_id = h.id 
+         AND h.name = 'Anti-Mage' 
+         AND d.id = u.user_id 
+   GROUP  BY d.username; 
    ```
 
    ![Alt text](./images/Query15.png?height=500 "Query")
 
 16. List down all the players and the number of times they have played the heros "Troll Warlord" and "Bristeback"
    ```SQL
-   select d.username, count(*) from userhero u,hero h, duser d where u.hero_id = h.id and (h.name= 'Troll Warlord' or h.name='Bristleback') and d.id = u.user_id group by d.username, d.id;
+   SELECT d.username, 
+       Count(*) 
+   FROM   userhero u, 
+         hero h, 
+         duser d 
+   WHERE  u.hero_id = h.id 
+         AND ( h.name = 'Troll Warlord' 
+               OR h.name = 'Bristleback' ) 
+         AND d.id = u.user_id 
+   GROUP  BY d.username, 
+            d.id; 
    ```
 
    ![Alt text](./images/Query16.png?height=500 "Query")
 
 17. For each hero, list down their main type (agility, strength and intelligence)
    ```SQL
-   select id, name, type from hero;
+   SELECT id, 
+       name, 
+       type 
+   FROM   hero; 
    ```
 
    ![Alt text](./images/Query17.png?height=500 "Query")
 
 18. Name the user with the highest number of victories
    ```SQL
-   select username, email from duser where id in (select user_id from userhero where victory = True group by user_id having count(*) = (select count(*) win_count from userhero where victory=True group by user_id order by win_count desc limit 1));
+   SELECT username, 
+       email 
+   FROM   duser 
+   WHERE  id IN (SELECT user_id 
+               FROM   userhero 
+               WHERE  victory = true 
+               GROUP  BY user_id 
+               HAVING Count(*) = (SELECT Count(*) win_count 
+                                    FROM   userhero 
+                                    WHERE  victory = true 
+                                    GROUP  BY user_id 
+                                    ORDER  BY win_count DESC 
+                                    LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query18.png?height=500 "Query")
 
 19. Name the user with the highest win rate
    ```SQL
-   select d.username, win_count*100/(win_count+loss_count) as win_prct from duser d, (select user_id,count(*) as win_count from userhero where victory=True group by user_id) as a, (select user_id,count(*) as loss_count from userhero where victory=False group by user_id) as b where d.id = a.user_id and a.user_id = b.user_id order by win_prct desc limit 1;
+   SELECT d.username, 
+       win_count * 100 / ( win_count + loss_count ) AS win_prct 
+   FROM   duser d, 
+         (SELECT user_id, 
+                  Count(*) AS win_count 
+         FROM   userhero 
+         WHERE  victory = true 
+         GROUP  BY user_id) AS a, 
+         (SELECT user_id, 
+                  Count(*) AS loss_count 
+         FROM   userhero 
+         WHERE  victory = false 
+         GROUP  BY user_id) AS b 
+   WHERE  d.id = a.user_id 
+         AND a.user_id = b.user_id 
+   ORDER  BY win_prct DESC 
+   LIMIT  1; 
    ```
 
    ![Alt text](./images/Query19.png?height=500 "Query")
 
 20. Name the user with the lowest number of victories
    ```SQL
-   select username, email from duser where id in (select user_id from userhero where victory = True group by user_id having count(*) = (select count(*) win_count from userhero where victory=True group by user_id order by win_count asc limit 1));
+   SELECT username, 
+       email 
+   FROM   duser 
+   WHERE  id IN (SELECT user_id 
+               FROM   userhero 
+               WHERE  victory = true 
+               GROUP  BY user_id 
+               HAVING Count(*) = (SELECT Count(*) win_count 
+                                    FROM   userhero 
+                                    WHERE  victory = true 
+                                    GROUP  BY user_id 
+                                    ORDER  BY win_count ASC 
+                                    LIMIT  1)); 
    ```
 
    ![Alt text](./images/Query20.png?height=500 "Query")
