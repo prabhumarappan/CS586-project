@@ -440,6 +440,8 @@ I have also included all the scripts in the `scripts` folder which was used to g
    ```
 
    ![Alt text](./images/Query9.png?height=500 "Query")
+
+   ![Alt text](./images/Query9Rows.png?height=500 "Query")
    
 10. List the longest running match
    ```SQL
@@ -471,6 +473,8 @@ I have also included all the scripts in the `scripts` folder which was used to g
    ```
 
    ![Alt text](./images/Query11.png?height=500 "Query")
+
+   ![Alt text](./images/Query11Rows.png?height=500 "Query")
 
 12. For each player, list one player they have played the most with
    ```SQL
@@ -512,6 +516,8 @@ I have also included all the scripts in the `scripts` folder which was used to g
    ```
 
    ![Alt text](./images/Query12.png?height=500 "Query")
+
+   ![Alt text](./images/Query12Rows.png?height=500 "Query")
 
 13. For player Ana (or any other player) list down their top 5 successful matches and their KD rate(won game and highest KD)
    ```SQL
@@ -606,6 +612,8 @@ I have also included all the scripts in the `scripts` folder which was used to g
    ```
 
    ![Alt text](./images/Query17.png?height=500 "Query")
+
+   ![Alt text](./images/Query17Rows.png?height=500 "Query")
 
 18. Name the user with the highest number of victories
    ```SQL
