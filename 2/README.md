@@ -2,7 +2,11 @@
 
 ## Subject Area - Dota
 
-## ER Diagram
+## Old ER Diagram
+
+![Alt text](./images/Dota%20ER%20Diagram%20(Old).png?height=800 "Title")
+
+## New ER Diagram
 
 ![Alt text](./images/Dota%20ER%20Diagram.png?height=800 "Title")
 
